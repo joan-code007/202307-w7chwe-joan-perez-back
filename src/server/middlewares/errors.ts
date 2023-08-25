@@ -3,7 +3,7 @@ import CustomError from "../CustomError/CustomError.js";
 
 export const endpointNotFound = (
   _req: Request,
-  res: Response,
+  _res: Response,
   next: NextFunction,
 ) => {
   const endpointError = new CustomError(
@@ -21,7 +21,7 @@ export const generalErrorHandler = (
   res: Response,
   _next: NextFunction,
 ) => {
-  const errorMessage = error.message || "Ups somethings went wrong";
+  const errorMessage = error.message || "Ups, somethings went wrong";
   const errorStatusCode = error.statusCode ?? 500;
 
   res.status(errorStatusCode).json({ error: errorMessage });
