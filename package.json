@@ -1,0 +1,28 @@
+{
+  "name": "robositos-back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node . ",
+    "start:dev": "node . --watch",
+    "build": "tsc",
+    "build:dev": "tsc -w",
+    "test:dev": "jest --watch",
+    "test": "jest",
+    "test:coverage": "jest --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/debug": "^4.1.8",
+    "@types/node": "^20.5.6",
+    "debug": "^4.3.4",
+    "express": "^4.18.2",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@types/express": "^4.17.17"
+  }
+}
