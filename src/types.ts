@@ -1,4 +1,4 @@
-export interface Robot {
+export interface RobotStructure {
   id: string;
   name: string;
   speed: number;
