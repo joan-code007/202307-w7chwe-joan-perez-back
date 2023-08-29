@@ -1,6 +1,6 @@
 import { type Request, type Response } from "express";
-import CustomError from "../CustomError/CustomError.js";
-import { endpointNotFound, generalErrorHandler } from "./errors.js";
+import CustomError from "../../CustomError/CustomError";
+import { endpointNotFound, generalErrorHandler } from "./error";
 
 const next = jest.fn();
 const req: Partial<Request> = {};
@@ -9,9 +9,9 @@ const res: Partial<Response> = {
   json: jest.fn(),
 };
 
-describe("Given a middleware error ednpointNotFound", () => {
-  describe("When the next function received is called", () => {
-    test("Then it should call the passed next function with an error with status code 404", () => {
+describe("Given a endpointNotFound error middleware", () => {
+  describe("When the passed next functions is calles", () => {
+    test("Then it should call the passed next function with a custom error with status code 404", () => {
       const customError = new CustomError(
         "Endpoint not found",
         404,
@@ -25,7 +25,7 @@ describe("Given a middleware error ednpointNotFound", () => {
   });
 });
 
-describe("Given a middleware error generalErrorHandler", () => {
+describe("Given a generalErrorhandler error middleware", () => {
   describe("When it receives a response and an error with status code 404", () => {
     const generalError = new CustomError(
       "Endpoint not found",
@@ -38,7 +38,7 @@ describe("Given a middleware error generalErrorHandler", () => {
       expect(res.status).toBeCalledWith(generalError.statusCode);
     });
 
-    test("Then it should call the json method response with the message 'Ups, somethings went wrong'", () => {
+    test("Then it should call the json method response with the message 'Endpoint not found'", () => {
       expect(res.json).toBeCalledWith({ error: generalError.message });
     });
   });

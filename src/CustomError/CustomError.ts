@@ -2,7 +2,7 @@ class CustomError extends Error {
   constructor(
     message: string,
     public statusCode: number,
-    public privateMessage: string,
+    public privateMesage: string,
   ) {
     super(message);
   }
